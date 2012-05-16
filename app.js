@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -20,16 +19,20 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
-  app.use(express.errorHandler()); 
+  app.use(express.errorHandler());
 });
 
 // Routes
 
-app.get('/', routes.index);
+app.get('/images/brb.jpeg', routes.image);
+
+app.get('*', routes.index);
+
+app.get('/images/brb.jpeg', routes.image);
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
